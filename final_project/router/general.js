@@ -54,76 +54,84 @@ public_users.get('/', async function (req, res) {
 });
 
 
-// Get book details based on ISBN using Axios
-public_users.get('/isbn/:isbn', async function (req, res) {
-  const ISBN = req.params.isbn;
+// Get book details based on ISBN
+// Search for the book with the specified ISBN
+//Test on http://localhost:5000/isbn/1
 
-  try {
-    // Simulating a request to an external API (could be another route or localhost)
-    const response = await axios.get(`http://localhost:5000/books/`);
-    const allBooks = response.data;
+public_users.get("/isbn/:isbn", (req, res) => {
+  const requestedISBN = req.params.isbn;
 
-    if (allBooks[ISBN]) {
-      res.status(200).json(allBooks[ISBN]);
-    } else {
-      res.status(404).json({ message: "Book not found for the given ISBN" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: "Error retrieving book data", error: error.message });
-  }
-});
+  const findBookByISBN = () => {
+    return new Promise((resolve, reject) => {
+      const book = books[requestedISBN];
+      if (book) {
+        resolve(book);
+      } else {
+        reject(new Error("Book not found"));
+      }
+    });
+  };
 
-  
-// Get book details based on Author using Axios
-public_users.get('/author/:author', async function (req, res) {
-  const author = req.params.author;
-
-  try {
-    // Simulate fetching all books from an external API (like your own route)
-    const response = await axios.get('http://localhost:5000/books/');
-    const allBooks = response.data;
-
-    // Filter books by the provided author
-    const matchingBooks = Object.values(allBooks).filter(
-      (book) => book.author.toLowerCase() === author.toLowerCase()
-    );
-
-    if (matchingBooks.length > 0) {
-      res.status(200).json(matchingBooks);
-    } else {
-      res.status(404).json({ message: "Author not found" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: "Error retrieving books", error: error.message });
-  }
+  findBookByISBN()
+    .then((book) => res.status(200).json(book))
+    .catch((error) => {
+      console.error("Error fetching book details:", error.message);
+      return res.status(404).json({ message: "Book not found" });
+    });
 });
 
 
+// Get book details based on author
+// Test on http://localhost:5000/author/Jane Austen
+public_users.get("/author/:author", (req, res) => {
+  const requestedAuthor = req.params.author;
 
-// Get book details based on Title using Axios
-public_users.get('/title/:title', async function (req, res) {
-  const title = req.params.title;
+  const findAuthorBook = () => {
+    return new Promise((resolve, reject) => {
+      const author = Object.values(books).find(
+        (a) => a.author === requestedAuthor
+      );
+      if (author) {
+        resolve(author);
+      } else {
+        reject(new Error("Author not found"));
+      }
+    });
+  };
 
-  try {
-    // Simulate fetching all books from an external API
-    const response = await axios.get('http://localhost:5000/books/');
-    const allBooks = response.data;
-
-    // Filter books by the provided title
-    const matchingBooks = Object.values(allBooks).filter(
-      (book) => book.title.toLowerCase() === title.toLowerCase()
-    );
-
-    if (matchingBooks.length > 0) {
-      res.status(200).json(matchingBooks);
-    } else {
-      res.status(404).json({ message: "Title not found" });
-    }
-  } catch (error) {
-    res.status(500).json({ message: "Error retrieving books", error: error.message });
-  }
+  findAuthorBook()
+    .then((author) => res.status(200).json(author))
+    .catch((error) => {
+      console.error("Error fetching author details:", error.message);
+      return res.status(404).json({ message: "Author not found" });
+    });
 });
 
+// Get all books based on title
+// TEST eg http://localhost:5000/title/The Epic Of Gilgamesh
+public_users.get("/title/:title", (req, res) => {
+  const requestedTitle = req.params.title;
+
+  const findBookByTitle = () => {
+    return new Promise((resolve, reject) => {
+      const title = Object.values(books).find(
+        (t) => t.title === requestedTitle
+      );
+      if (title) {
+        resolve(title);
+      } else {
+        reject(new Error("Book not found"));
+      }
+    });
+  };
+
+  findBookByTitle()
+    .then((book) => res.status(200).json(book))
+    .catch((error) => {
+      console.error("Error fetching book details:", error.message);
+      return res.status(404).json({ message: "Book not found" });
+    });
+});
 
 
 //  Get book review
