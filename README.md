@@ -46,6 +46,67 @@ Complete the code for registering a new user
 Hint: The code should take the ‘username’ and ‘password’ provided in the body of the request for registration. If the username already exists, it must mention the same & must also show other errors like eg. when username &/ password are not provided.
 
 
+Update and test the authenticated user routes in auth_users.js.
+Task 7:
+Complete the code for logging in as a registered user.
+Hint: The code must validate and sign in a customer based on the username and password created in Exercise 6. It must also save the user credentials for the session as a JWT.
+As you are required to login as a customer, while testing the output on Postman, use the endpoint as "customer/login"
 
+
+
+Task 8:
+Complete the code for adding or modifying a book review.
+Hint: You have to give a review as a request query & it must get posted with the username (stored in the session) posted. If the same user posts a different review on the same ISBN, it should modify the existing review. If another user logs in and posts a review on the same ISBN, it will get added as a different review under the same ISBN.
+
+
+
+Task 9:
+Complete the code for deleting a book review under regd_users.delete("/auth/review/:isbn", (req, res) => {
+
+Hint: Filter & delete the reviews based on the session username, so that a user can delete only his/her reviews and not other users’.
+
+Test the output on Postman.
+
+
+
+Improving the scope of Tasks 1-4 using Promises or Async-Await
+You will now use Promise callbacks or Async-Await functions for doing the same functionality which we covered synchronously in Tasks 1-4.
+
+Note: Please take a screenshot of your code implementation using either async/await or Promises for Tasks 10-13. This screenshot will be used for peer review submission.
+
+Task 10:
+Add the code for getting the list of books available in the shop (done in Task 1) using Promise callbacks or async-await with Axios.
+Hint: Refer to this lab on Promises and Callbacks.
+
+Please ensure that the general.js file has the code for getting the list of books available in the shop using Promise callbacks or async-await with Axios is covered.
+
+
+
+
+Task 11:
+Add the code for getting the book details based on ISBN (done in Task 2) using Promise callbacks or async-await with Axios.
+Hint: Refer to this lab on Promises and Callbacks.
+
+Please ensure that the general.js file has the code for getting the book details based on ISBN using Promise callbacks or async-await with Axios is covered.
+
+
+Task 12:
+Add the code for getting the book details based on Author (done in Task 3) using Promise callbacks or async-await with Axios.
+Hint: Refer to this lab on Promises and Callbacks.
+
+Please ensure that the general.js file has the code for or getting the book details based on Author using Promise callbacks or async-await with Axios is covered.
+
+
+Task 13:
+Add the code for getting the book details based on Title (done in Task 4) using Promise callbacks or async-await with Axios.
+Hint: Refer to this lab on Promises and Callbacks.
+
+
+
+
+
+Please ensure that the general.js file has the code for or getting the book details based on Title using Promise callbacks or async-await with Axios is covered.
+
+Please take a screenshot of the same and save it with the name task13.png for submitting under Task 13 for the Peer Review Assignment.
 
 
