@@ -104,9 +104,8 @@ Hint: Refer to this lab on Promises and Callbacks.
 
 
 
-
 Please ensure that the general.js file has the code for or getting the book details based on Title using Promise callbacks or async-await with Axios is covered.
 
-Please take a screenshot of the same and save it with the name task13.png for submitting under Task 13 for the Peer Review Assignment.
+
 
 
