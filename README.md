@@ -68,14 +68,11 @@ Complete the code for deleting a book review under regd_users.delete("/auth/revi
 
 Hint: Filter & delete the reviews based on the session username, so that a user can delete only his/her reviews and not other users’.
 
-Test the output on Postman.
-
-
-
 Improving the scope of Tasks 1-4 using Promises or Async-Await
 You will now use Promise callbacks or Async-Await functions for doing the same functionality which we covered synchronously in Tasks 1-4.
 
-Note: Please take a screenshot of your code implementation using either async/await or Promises for Tasks 10-13. This screenshot will be used for peer review submission.
+
+
 
 Task 10:
 Add the code for getting the list of books available in the shop (done in Task 1) using Promise callbacks or async-await with Axios.
