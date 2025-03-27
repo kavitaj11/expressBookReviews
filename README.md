@@ -46,7 +46,10 @@ Complete the code for registering a new user
 Hint: The code should take the ‘username’ and ‘password’ provided in the body of the request for registration. If the username already exists, it must mention the same & must also show other errors like eg. when username &/ password are not provided.
 
 
+
+
 Update and test the authenticated user routes in auth_users.js.
+
 Task 7:
 Complete the code for logging in as a registered user.
 Hint: The code must validate and sign in a customer based on the username and password created in Exercise 6. It must also save the user credentials for the session as a JWT.
